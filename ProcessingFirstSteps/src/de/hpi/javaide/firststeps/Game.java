@@ -5,7 +5,7 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class Game extends PApplet {
 	
-	// Aufgabe 2: Ändere den Code so ab, dass das Rechteck sich von der linken oberen Ecke in die rechte untere Ecke bewegt.
+	// Aufgabe 4: Ändere den Code so ab, dass du das Rechteck mit der Maus bewegen kannst.
 	
 	// Um eine Bewegung zu erzeugen brauchen wir zunächst variable Werte
 	private int x;
@@ -21,7 +21,6 @@ public class Game extends PApplet {
 		
 		// Hier zeichnen wir das Rechteck zum ersten Mal. 
 		// Um den Code wenigstens etwas zu strukturieren haben wir dabei die Befehle in eine Methode verpackt, die wir nun an verschiedenen Stellen aufrufen können.
-		// Dieser erste Aufruf an dieser Stelle, ist allerdings zugegebenermaßen nicht wirklich notwendig.
 		drawRect(this.x , this.y);
 	}
 
@@ -33,24 +32,22 @@ public class Game extends PApplet {
 	public void draw() {
 		// Um dafür zu sorgen, dass sich das Rechteck tatsächlich bewegt, muss auch der Hintergrund immer wieder neu gemalt werden.
 		background(0);
-		
-		// Der Wert der x/y Position wird bei jedem Aufruf der draw() Methode um 1 erhöht. 
-		// Gezeigt werden 3 alternative Schreibweisen.
-		this.x = this.x + 1;
-		this.y += 1;
-		//this.y++;
-		
+				
 		// Das Rechteck wird immer wieder neu gezeichnet
 		drawRect(this.x , this.y);
-		
-		//Wenn das Rechteck den rechten unteren Rand erreicht hat, wird die Animation gestoppt
-		//this.width ist ein Wert der von Processing gesetzt wird. Mittels der size() Methode lässt sich die Größe des Fensters ändern.
-		//this.width, this.height werden dadurch automatisch angepasst.
-		//Die -10 ergibt sich aus der Breite des Rechtecks. Sauberer wäre es natürlich auch hier den Wert in einer Variablen oder Konstanten zu speichern. 
-		//if (this.y > this.width - 10) {
-			//noLoop() stoppt die Ausführung der draw() Methode
-			//noLoop();
-		//}
+	}
+	
+	/**
+	 * Anstatt das Rechteck mit dem Keyboard zu steuern, steuern wir es nun mit der Maus.
+	 * Die mouseDragged() Methode wird immer dann aufgerufen wenn die Maus bei gedrückter Maustaste bewegt wird.
+	 * 
+	 * Ändere den Code bitte so, dass sich das Rechteck bewegt auch ohne, dass die Maustaste gedrückt ist.
+	 */
+	@Override
+	public void mouseDragged() {
+		// mouseX und mouseY sind von Processing gesetzte Wertein der die aktuelle Position der Maustaste gespeichert ist.
+		this.x = mouseX;
+		this.y = mouseY;
 	}
 	
 	/**
@@ -68,3 +65,4 @@ public class Game extends PApplet {
 	}
 	
 }
+
